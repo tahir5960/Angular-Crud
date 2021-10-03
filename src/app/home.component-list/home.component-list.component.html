@@ -1,0 +1,23 @@
+<div style="margin:0 30px;">
+    <h2> CompanyForm </h2>
+    <table>
+        <tr>
+            <th>S.no</th>
+            <th> FullName</th>
+            <th> Email </th>
+            <th> Designation </th>
+            <th> Employee Number </th>
+            <th> Action </th>
+            
+        </tr>
+        <tr *ngFor="let companyForm of forms ; index  i">
+            <td>{{ i }}</td>
+            <td>{{ companyForm.fullName  }}</td>
+            <td>{{ companyForm.email }}</td>
+            <td>{{ companyForm.designation  }}</td>
+            <td>{{ companyForm.employeeNumber }}</td>
+            <button class="btn btn-default"> Edit</button>
+            <button class="btn btn-danger"> Delete </button>
+        </tr>
+    </table>
+</div>
