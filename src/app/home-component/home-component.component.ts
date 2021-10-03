@@ -1,25 +1,28 @@
 
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { HomecomponentService } from '../homecomponent.service';
+import { HomeService } from '../homecomponent.service';
 @Component({
   selector: 'app-home-component',
   templateUrl: './home-component.component.html',
   styleUrls: ['./home-component.component.css']
 })
 export class HomeComponentComponent implements OnInit {
+  submitted: boolean;
+  form = this.homeService.form;
 
-  constructor(private homeComponentService: HomecomponentService) { }
- submitted: boolean;
- formControls = this.homeComponentService.form.controls;
+  constructor(private homeService: HomeService) { }
+  
   ngOnInit(): void {
   }
 
 onSubmit(){
-  this.submitted = true;
-  if(this.homeComponentService.form.valid){
-    this.submitted = false;
+  if(this.homeService.form.valid){
+    console.log("this.homeComponentService.form: ", this.homeService.form.value);
+    this.homeService.addCompanyData(this.homeService.form.value);
+    this.homeService.form.reset();
     
+  } else {
+    alert("Please enter valid data");
   }
 
 }

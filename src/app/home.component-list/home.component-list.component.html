@@ -1,23 +1,30 @@
 <div style="margin:0 30px;">
-    <h2> CompanyForm </h2>
-    <table>
-        <tr>
-            <th>S.no</th>
-            <th> FullName</th>
-            <th> Email </th>
-            <th> Designation </th>
-            <th> Employee Number </th>
-            <th> Action </th>
-            
-        </tr>
-        <tr *ngFor="let companyForm of forms ; index  i">
-            <td>{{ i }}</td>
-            <td>{{ companyForm.fullName  }}</td>
-            <td>{{ companyForm.email }}</td>
-            <td>{{ companyForm.designation  }}</td>
-            <td>{{ companyForm.employeeNumber }}</td>
-            <button class="btn btn-default"> Edit</button>
-            <button class="btn btn-danger"> Delete </button>
-        </tr>
+    <h1> Company Data </h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">S.no</th>
+                <th scope="col"> FullName</th>
+                <th scope="col"> Email </th>
+                <th scope="col"> Designation </th>
+                <th scope="col"> Employee Number </th>
+                <th scope="col"> Action </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let company of companyData; let i = index">
+                <th scope="row">{{ i+1 }}</th>
+                <td>{{ company.fullName }}</td>
+                <td>{{ company.email }}</td>
+                <td>{{ company.designation }}</td>
+                <td>{{ company.employeeNumber }}</td>
+                <td>
+                    <button class="btn btn-default" style="margin-right: 5px;"> <i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger"> <i class="fas fa-trash"></i> </button>
+                </td>
+            </tr>
+            <tr *ngIf="companyData.length === 0"><td colspan="5">No Data available, Please enter company data from the form on the left</td></tr>
+        </tbody>
     </table>
 </div>
